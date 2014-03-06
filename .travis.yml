@@ -22,8 +22,7 @@ install:
   - cp t/travis/thruk_local.conf .
   - sudo chmod 660 /var/cache/naemon/live
   - sudo gpasswd -a $(id -un) naemon
-  - newgrp
-  - id -a
+  - exec newgrp naemon
 
 script:
   - TEST_AUTHOR=1 make test
