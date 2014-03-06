@@ -19,9 +19,11 @@ before_install:
 install:
   - ./configure     || exit 1
   - make            || exit 1
+  - cp t/travis/thruk_local.conf .
+  - sudo chmod 660 /var/cache/naemon/live
+  - sudo chgrp $(id -gn) /var/cache/naemon/live
 
 script:
-  - cp t/travis/thruk_local.conf .
   - TEST_AUTHOR=1 make test
 notifications:
   email:
