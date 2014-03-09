@@ -41,6 +41,7 @@ my $test_downtime = [{
     'flex_range'    => 720,
     'childoptions'  => 0,
     'nr'            => $rand,
+    'verbose'       => 1,
 }];
 
 for my $downtime (@{$test_downtime}) {
