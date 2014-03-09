@@ -66,7 +66,7 @@ for my $downtime (@{$test_downtime}) {
     like($logfile, '/cron\.log$/', "got cron log: ".$logfile);
     `>$logfile`;
 
-    # wait 90 seconds for a downtime
+    # wait 150 seconds for a downtime
     my $now   = time();
     my $found = 0;
     while($now > time() - 150) {
@@ -80,8 +80,14 @@ for my $downtime (@{$test_downtime}) {
     }
     if(!$found) {
         fail("downtime did not occur in time");
-        diag("cat $logfile:");
-        diag(`cat $logfile`);
+        for my $cmd ("cat $logfile",
+                     "crontab -l",
+                     "ps -efl",
+                     "$BIN 'extinfo.cgi?type=6'",
+                    ) {
+            diag("cmd: $cmd");
+            diag(`$cmd`);
+        }
     }
 }
 
