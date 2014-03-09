@@ -15,7 +15,7 @@ before_install:
   - cpanm -q -f --installdeps --notest .
   - git config --global user.email "travis@localhost"
   - git config --global user.name "Travis Testuser"
-  - wget -O "http://www.thruk.org/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.gz" /tmp/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.gz
+  - wget "http://www.thruk.org/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.gz" -O /tmp/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.gz
   - cd /tmp/ tar zxf wkhtmltopdf-0.11.0_rc1-static-amd64.tar.gz && mv wkhtmltopdf-amd64 wkhtmltopdf && cd -
 
 install:
