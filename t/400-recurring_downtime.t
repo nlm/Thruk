@@ -85,6 +85,7 @@ for my $downtime (@{$test_downtime}) {
                      "crontab -l",
                      "ps -efl",
                      "$BIN 'extinfo.cgi?type=6'",
+                     "$BIN 'showlog.cgi?pattern=EXTERNAL+COMMAND&start=yesterday&end=now'",
                     ) {
             diag("cmd: $cmd");
             diag(`$cmd`);
